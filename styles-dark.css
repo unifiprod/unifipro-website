@@ -366,30 +366,41 @@ img { max-width: 100%; display: block; }
   align-items: center;
 }
 
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 440px));
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+}
+
 .price-card {
   width: 100%;
   max-width: 440px;
   background: #16181d;
-  border: 2px solid var(--color-blue);
+  border: 1.5px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 40px 36px;
   position: relative;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.price-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-blue);
   box-shadow: var(--shadow-lg);
 }
 
-.price-card-tag {
-  position: absolute;
-  top: -14px;
-  left: 36px;
-  background: var(--color-blue);
-  color: var(--color-white);
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 999px;
+.price-card > .btn {
+  margin-top: auto;
+}
+
+.price-card-desc {
+  font-size: 14.5px;
+  color: var(--color-muted);
+  margin: -2px 0 20px;
 }
 
 .price-card-name {
@@ -461,6 +472,68 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* ==========================================================================
+   Manifesto
+   ========================================================================== */
+
+.manifesto-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.manifesto-title {
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -0.01em;
+  margin-bottom: 26px;
+}
+.manifesto-line {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 10px;
+}
+.manifesto-line:last-child {
+  margin-bottom: 0;
+}
+.manifesto-line .highlight {
+  color: var(--color-blue);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Stats strip
+   ========================================================================== */
+
+.stats-section {
+  padding: 64px 0;
+  background: var(--color-bg-alt);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 4vw, 44px);
+  color: var(--color-blue);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
 }
 
 /* ==========================================================================
@@ -572,6 +645,25 @@ img { max-width: 100%; display: block; }
   max-width: 260px;
 }
 
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: var(--color-muted);
+  transition: color 0.15s ease;
+}
+.social-icon svg { width: 20px; height: 20px; }
+.social-icon:hover {
+  color: var(--color-blue);
+}
+
 .footer-col h4 {
   font-size: 14px;
   text-transform: uppercase;
@@ -622,6 +714,8 @@ img { max-width: 100%; display: block; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
 }
 
 @media (max-width: 760px) {
