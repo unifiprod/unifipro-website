@@ -10,7 +10,7 @@
   --color-blue-light: #eaf1fa;
   --color-blue-tint: #f3f7fc;
   --color-bg: #ffffff;
-  --color-bg-alt: #f7f9fb;
+  --color-bg-alt: #eceff3;
   --color-muted: #5b6472;
   --color-border: #e5e8ec;
   --color-white: #ffffff;
@@ -29,6 +29,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 90px; }
 
 body {
   margin: 0;
@@ -187,14 +188,14 @@ img { max-width: 100%; display: block; }
 .logo-mark {
   display: block;
   flex-shrink: 0;
-  height: 22px;
+  height: 17px;
   width: auto;
 }
 
 .logo-text {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 19px;
+  font-size: 17px;
   color: var(--color-black);
   letter-spacing: -0.01em;
 }
@@ -223,6 +224,7 @@ img { max-width: 100%; display: block; }
 .nav-toggle {
   display: none;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 5px;
   width: 34px;
@@ -231,9 +233,14 @@ img { max-width: 100%; display: block; }
   border: none;
   cursor: pointer;
   padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .nav-toggle span {
+  display: block;
+  width: 20px;
   height: 2px;
+  flex-shrink: 0;
   background: var(--color-black);
   border-radius: 2px;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -270,7 +277,7 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-title {
-  font-size: clamp(38px, 6vw, 68px);
+  font-size: clamp(30px, 5vw, 54px);
   letter-spacing: -0.02em;
 }
 
@@ -302,7 +309,7 @@ img { max-width: 100%; display: block; }
   text-align: center;
 }
 .section-head h2 {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(22px, 3.2vw, 32px);
   letter-spacing: -0.01em;
 }
 .section-sub {
@@ -311,6 +318,7 @@ img { max-width: 100%; display: block; }
 }
 
 .grid { display: grid; gap: 24px; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
 /* ==========================================================================
@@ -343,7 +351,7 @@ img { max-width: 100%; display: block; }
 }
 
 .feature-card h3 {
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 .feature-card p {
@@ -399,7 +407,7 @@ img { max-width: 100%; display: block; }
 }
 
 .price-card-name {
-  font-size: 24px;
+  font-size: 19px;
   margin-bottom: 4px;
 }
 
@@ -411,12 +419,13 @@ img { max-width: 100%; display: block; }
 }
 .price-card-amount .amount {
   font-family: var(--font-display);
-  font-size: 42px;
+  font-size: 30px;
   font-weight: 800;
   color: var(--color-black);
 }
 .price-card-amount .period {
-  font-size: 15px;
+  font-family: var(--font-display);
+  font-size: 13px;
   color: var(--color-muted);
 }
 
@@ -479,7 +488,7 @@ img { max-width: 100%; display: block; }
   text-align: center;
 }
 .manifesto-title {
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(22px, 3.2vw, 34px);
   letter-spacing: -0.01em;
   margin-bottom: 26px;
 }
@@ -532,6 +541,104 @@ img { max-width: 100%; display: block; }
 }
 
 /* ==========================================================================
+   Legal pages
+   ========================================================================== */
+
+.legal-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.legal-updated {
+  color: var(--color-muted);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+.legal-content h2 {
+  font-size: 18px;
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+.legal-content h2:first-of-type {
+  margin-top: 0;
+}
+.legal-content p {
+  font-size: 15.5px;
+  color: var(--color-muted);
+  margin-bottom: 0;
+}
+.legal-content a {
+  color: var(--color-blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==========================================================================
+   About page — team
+   ========================================================================== */
+
+.about-hero {
+  padding-bottom: 50px;
+}
+.about-hero .hero-title {
+  font-size: clamp(26px, 4vw, 42px);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.team-card {
+  background: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.team-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-blue);
+  box-shadow: var(--shadow-lg);
+}
+
+.team-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.team-name {
+  font-size: 16px;
+  margin: 24px 28px 4px;
+}
+
+.team-role {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-blue);
+  margin: 0 28px 14px;
+}
+
+.team-bio {
+  font-size: 15px;
+  color: var(--color-muted);
+  margin: 0 28px 28px;
+}
+
+/* ==========================================================================
    CTA banner
    ========================================================================== */
 
@@ -547,7 +654,7 @@ img { max-width: 100%; display: block; }
 }
 .cta-banner-inner h2 {
   color: var(--color-white);
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(22px, 3.2vw, 32px);
 }
 .cta-banner-inner p {
   color: rgba(255, 255, 255, 0.7);
@@ -620,7 +727,7 @@ img { max-width: 100%; display: block; }
 .site-footer {
   background: var(--color-bg-alt);
   border-top: 1px solid var(--color-border);
-  padding-top: 64px;
+  padding-top: 40px;
 }
 
 .footer-inner {
@@ -656,7 +763,7 @@ img { max-width: 100%; display: block; }
 }
 
 .footer-col h4 {
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 16px;
@@ -675,12 +782,28 @@ img { max-width: 100%; display: block; }
 }
 .footer-bottom-inner {
   padding: 22px 24px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 24px;
 }
 .footer-bottom-inner p {
   margin: 0;
   font-size: 13.5px;
   color: var(--color-muted);
+}
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
+.footer-legal a {
+  font-size: 13.5px;
+  color: var(--color-muted);
+  transition: color 0.15s ease;
+}
+.footer-legal a:hover {
+  color: var(--color-blue);
 }
 
 /* ==========================================================================
@@ -702,11 +825,13 @@ img { max-width: 100%; display: block; }
    ========================================================================== */
 
 @media (max-width: 900px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+  .team-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
 }
 
 @media (max-width: 760px) {
@@ -730,13 +855,51 @@ img { max-width: 100%; display: block; }
   .nav-toggle { display: flex; }
   .header-actions .btn-sm { display: none; }
 
-  .hero { padding: 90px 0 70px; }
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 76px);
+    min-height: calc(100dvh - 76px);
+    padding: 40px 0;
+  }
   .section { padding: 70px 0; }
 
+  .grid-3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: 1fr; }
 
   .form-row { grid-template-columns: 1fr; }
   .contact-form { padding: 28px; }
 
   .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom-inner { justify-content: center; text-align: center; }
+}
+
+/* WhatsApp widget */
+.whatsapp-widget {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+.whatsapp-widget:hover { transform: scale(1.08); }
+.whatsapp-widget svg { width: 30px; height: 30px; }
+
+@media (max-width: 640px) {
+  .whatsapp-widget {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  .whatsapp-widget svg { width: 26px; height: 26px; }
 }
