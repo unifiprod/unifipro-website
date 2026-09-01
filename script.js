@@ -56,8 +56,66 @@ const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
 
 if (contactForm) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const fields = {
+    name: { el: document.getElementById('name'), errorEl: document.getElementById('nameError') },
+    email: { el: document.getElementById('email'), errorEl: document.getElementById('emailError') },
+    message: { el: document.getElementById('message'), errorEl: document.getElementById('messageError') },
+  };
+
+  function setError(field, message) {
+    fields[field].el.closest('.form-field').classList.add('has-error');
+    fields[field].errorEl.textContent = message;
+  }
+
+  function clearError(field) {
+    fields[field].el.closest('.form-field').classList.remove('has-error');
+    fields[field].errorEl.textContent = '';
+  }
+
+  function validateField(field) {
+    const value = fields[field].el.value.trim();
+    let message = '';
+
+    if (field === 'name') {
+      if (!value) message = 'Please enter your name.';
+      else if (value.length < 2) message = 'Name must be at least 2 characters.';
+    } else if (field === 'email') {
+      if (!value) message = 'Please enter your email.';
+      else if (!emailPattern.test(value)) message = 'Please enter a valid email address.';
+    } else if (field === 'message') {
+      if (!value) message = 'Please enter a message.';
+      else if (value.length < 10) message = 'Message must be at least 10 characters.';
+    }
+
+    if (message) {
+      setError(field, message);
+      return false;
+    }
+    clearError(field);
+    return true;
+  }
+
+  Object.keys(fields).forEach((field) => {
+    fields[field].el.addEventListener('input', () => {
+      if (fields[field].el.closest('.form-field').classList.contains('has-error')) {
+        validateField(field);
+      }
+    });
+  });
+
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    const fieldNames = Object.keys(fields);
+    const results = fieldNames.map(validateField);
+    const firstInvalidIndex = results.indexOf(false);
+
+    if (firstInvalidIndex !== -1) {
+      fields[fieldNames[firstInvalidIndex]].el.focus();
+      return;
+    }
 
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalLabel = submitBtn.textContent;
