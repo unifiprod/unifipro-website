@@ -365,7 +365,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ==========================================================================
-   Pricing
+   How We Partner
    ========================================================================== */
 
 .pricing-wrap {
@@ -376,7 +376,7 @@ img { max-width: 100%; display: block; }
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 440px));
+  grid-template-columns: repeat(3, minmax(0, 380px));
   gap: 24px;
   justify-content: center;
   width: 100%;
@@ -388,7 +388,7 @@ img { max-width: 100%; display: block; }
   background: #16181d;
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 40px 36px;
+  padding: 36px 30px;
   position: relative;
   box-shadow: var(--shadow-sm);
   display: flex;
@@ -401,46 +401,56 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--shadow-lg);
 }
 
-.price-card > .btn {
-  margin-top: auto;
-}
-
-.price-card-desc {
-  font-size: 14.5px;
-  color: var(--color-muted);
-  margin: -2px 0 20px;
+.price-card .feature-number {
+  align-self: flex-start;
+  margin-bottom: 18px;
 }
 
 .price-card-name {
   font-size: 19px;
-  margin-bottom: 4px;
+  margin-bottom: 20px;
 }
 
-.price-card-amount {
+.partner-meta {
+  margin: 0 0 24px;
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 30px;
+  flex-direction: column;
+  gap: 14px;
 }
-.price-card-amount .amount {
+.partner-meta dt {
   font-family: var(--font-display);
-  font-size: 30px;
-  font-weight: 800;
-  color: var(--color-black);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-blue);
+  margin-bottom: 4px;
 }
-.price-card-amount .period {
-  font-family: var(--font-display);
-  font-size: 13px;
+.partner-meta dd {
+  margin: 0;
+  font-size: 14.5px;
   color: var(--color-muted);
+}
+
+.partner-scope-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+  margin: 0 0 16px;
 }
 
 .price-card-features {
   list-style: none;
-  margin: 0 0 32px;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 .price-card-features li {
   display: flex;
@@ -472,15 +482,8 @@ img { max-width: 100%; display: block; }
   color: var(--color-muted);
 }
 
-.pricing-note {
-  margin-top: 26px;
-  font-size: 15px;
-}
-.pricing-note a {
-  color: var(--color-blue);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.partner-cta {
+  margin-top: 40px;
 }
 
 /* ==========================================================================
@@ -870,6 +873,7 @@ img { max-width: 100%; display: block; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .partner-cta { white-space: normal; text-align: center; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
   .team-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
 }
