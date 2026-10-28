@@ -286,6 +286,9 @@ img { max-width: 100%; display: block; }
   letter-spacing: -0.02em;
 }
 
+.hero-title .nowrap { white-space: nowrap; }
+.hero-title .br-mobile { display: none; }
+
 .hero-subtitle {
   font-size: clamp(16px, 2vw, 19px);
   color: var(--color-muted);
@@ -941,6 +944,9 @@ img { max-width: 100%; display: block; }
 .whatsapp-widget svg { width: 30px; height: 30px; }
 
 @media (max-width: 640px) {
+  .hero:not(.about-hero) .hero-title { font-size: min(7vw, 40px); }
+  .hero-title .br-mobile { display: inline; }
+  .hero-title .br-desktop { display: none; }
   .whatsapp-widget {
     right: 16px;
     bottom: 16px;
